@@ -23,6 +23,7 @@
   "homepage": "https://github.com/zghbyslzf/Multi-file-construction#readme",
   "devDependencies": {
     "@babel/core": "^7.4.4",
+    "@babel/polyfill": "^7.4.4",
     "@babel/preset-env": "^7.4.4",
     "autoprefixer": "^9.5.1",
     "babel-loader": "^8.0.6",

@@ -3,9 +3,10 @@ const CleanWebpackPlugin = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const webpack = require('webpack')
 
+const resolve = dir => path.resolve(__dirname, dir)
 module.exports = {
   entry: {
-    app: './src/index.js'
+    app: ['@babel/polyfill', resolve('./src/index.js')]
   },
   plugins: [
     new CleanWebpackPlugin(),
