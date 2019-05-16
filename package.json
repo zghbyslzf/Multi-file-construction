@@ -1,26 +1,14 @@
 {
-  "name": "Multi-file-construction",
+  "name": "multi-file-construction",
   "sideEffects": [
     "*.css"
   ],
   "version": "1.0.0",
-  "description": "Multi-file development environment built with webpack4.0",
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --open --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/zghbyslzf/Multi-file-construction.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/zghbyslzf/Multi-file-construction/issues"
-  },
-  "homepage": "https://github.com/zghbyslzf/Multi-file-construction#readme",
   "devDependencies": {
     "@babel/core": "^7.4.4",
     "@babel/polyfill": "^7.4.4",
