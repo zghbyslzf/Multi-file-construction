@@ -36,7 +36,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.css$/,
+        test: /\.(css|scss|sass)$/,
         use: [
           {
             loader: 'style-loader'
@@ -45,6 +45,12 @@ module.exports = {
             loader: 'css-loader',
             options: {
               importLoaders: 1
+            }
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              implementation: require('dart-sass')
             }
           },
           {
