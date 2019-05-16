@@ -5,6 +5,12 @@
   font-style: normal;
 }
 
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .hello {
   color: red;
   font-family: 'MyFont';
