@@ -1,39 +1,28 @@
 const path = require('path')
-const CleanWebpackPlugin = require('clean-webpack-plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
 const webpack = require('webpack')
 
 const resolve = dir => path.resolve(__dirname, dir)
+
 module.exports = {
+  // 入口配置
   entry: {
     app: ['@babel/polyfill', resolve('./src/index.js')]
   },
+
+  // 插件选项
   plugins: [
-    new CleanWebpackPlugin(),
-    new HtmlWebpackPlugin({
-      title: 'Production'
-    }),
-    new webpack.HashedModuleIdsPlugin(),
     new webpack.ProvidePlugin({
       _: 'lodash'
     })
   ],
+
+  // 打包输出配置
   output: {
     filename: '[name].[contenthash].js',
     path: path.resolve(__dirname, 'dist')
   },
-  optimization: {
-    runtimeChunk: 'single',
-    splitChunks: {
-      cacheGroups: {
-        vendor: {
-          test: /[\\/]node_modules[\\/]/,
-          name: 'vendors',
-          chunks: 'all'
-        }
-      }
-    }
-  },
+
+  // 定义模块规则
   module: {
     rules: [
       {
@@ -69,6 +58,7 @@ module.exports = {
       },
       {
         test: /\.js$/,
+        // 指定目录去加载babel-loader，提升运行、打包速度
         include: path.resolve(__dirname, 'src'),
         use: {
           loader: 'babel-loader'
