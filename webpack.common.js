@@ -22,6 +22,16 @@ module.exports = {
     path: path.resolve(__dirname, 'dist')
   },
 
+  // 配置路径解析
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, 'src') // 这里使用 path.resolve 和 __dirname 来获取绝对路径
+    },
+    modules: ['node_modules'],
+    // 自动路径补全
+    extensions: ['.wasm', '.mjs', '.js', '.json', '.jsx', '.scss']
+  },
+
   // 定义模块规则
   module: {
     rules: [
