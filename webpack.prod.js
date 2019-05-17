@@ -23,7 +23,7 @@ module.exports = merge(common, {
       new OptimizeCSSAssetsPlugin()
     ],
 
-    // 分包
+    // 分包，把node_modules作为公共部分
     splitChunks: {
       cacheGroups: {
         vendor: {
