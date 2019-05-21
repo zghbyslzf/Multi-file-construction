@@ -23,7 +23,7 @@ const common = {
     // 自动路径补全
     extensions: ['.wasm', '.mjs', '.js', '.json', '.jsx', '.scss']
   },
-
+  stats: { children: false },
   // 定义模块规则
   module: {
     rules: [
@@ -40,7 +40,10 @@ const common = {
             }
           },
           {
-            loader: 'postcss-loader'
+            loader: 'postcss-loader',
+            options: {
+              plugins: [require('autoprefixer')('last 100 versions')]
+            }
           },
           {
             loader: 'sass-loader',
