@@ -17,7 +17,9 @@ module.exports = merge(common, {
       // 压缩js、压缩css配置
       new UglifyJsPlugin({
         sourceMap: false,
+        // 可以是布尔值或字符串，如果是字符串既是缓存文件存放的路径
         cache: true,
+        // 启用多线程并提高编译速度
         parallel: true
       }),
       new OptimizeCSSAssetsPlugin()
@@ -27,8 +29,11 @@ module.exports = merge(common, {
     splitChunks: {
       cacheGroups: {
         vendor: {
+          // 匹配，只提取node_modules部分， '/\.css$/'只提取公共css
           test: /[\\/]node_modules[\\/]/,
+          // 提取出来的文件命名
           name: 'vendors',
+          // all 提取所有文件的公共部分，initial 提取入口文件的公共css及js部分
           chunks: 'all'
         }
       }

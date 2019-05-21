@@ -2,21 +2,11 @@ const path = require('path')
 const webpack = require('webpack')
 const newConfig = require('./webpack.entry')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 const common = {
   // 入口配置
   entry: newConfig.addEntry(),
-
-  // entry: {
-  //   app: ['@babel/polyfill', resolve('./src/index.js')]
-  // },
-
-  // 插件选项
-  plugins: [
-    new webpack.ProvidePlugin({
-      _: 'lodash'
-    })
-  ],
 
   // 打包输出配置
   output: {
@@ -41,7 +31,7 @@ const common = {
         test: /\.(css|scss|sass)$/,
         use: [
           {
-            loader: 'style-loader'
+            loader: MiniCssExtractPlugin.loader
           },
           {
             loader: 'css-loader',
@@ -50,35 +40,65 @@ const common = {
             }
           },
           {
+            loader: 'postcss-loader'
+          },
+          {
             loader: 'sass-loader',
             options: {
               implementation: require('dart-sass')
             }
-          },
-          {
-            loader: 'postcss-loader'
           }
         ]
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
-        use: ['file-loader']
+        use: [
+          {
+            loader: 'file-loader',
+            // 配置图片输出目录
+            options: {
+              limit: 10000,
+              // [name] 名字, [hash:6]添加6个hash值，[ext]后缀名
+              name: 'images/[name]-[hash:6].[ext]'
+            }
+          }
+        ]
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/,
-        use: ['file-loader']
+        use: [
+          {
+            loader: 'file-loader',
+            // 配置字体输出目录
+            options: {
+              name: 'fonts/[name]-[hash:6].[ext]'
+            }
+          }
+        ]
       },
       {
         test: /\.m?js$/,
-        // 指定目录去加载babel-loader，提升运行、打包速度
+        // 不在指定目录执行babel-loader，提升运行、打包速度
         exclude: /(node_modules|bower_components)/,
+        // 在指定目录下执行babel-loader
         // include: path.resolve(__dirname, 'src'),
         use: {
           loader: 'babel-loader'
         }
       }
     ]
-  }
+  },
+
+  // 插件选项
+  plugins: [
+    new webpack.ProvidePlugin({
+      _: 'lodash'
+    }),
+    new MiniCssExtractPlugin({
+      // 类似 webpackOptions.output里面的配置 可以忽略
+      filename: '[name].css'
+    })
+  ]
 }
 
 // 动态更新plugins里的 HtmlWebpackPlugin 插件
