@@ -75,3 +75,11 @@ src 下面每一个文件夹里面的 html 和 js 文件都要命名为 index，
 └── webpack.prod.js         # 生产环境配置
 
 ```
+
+## 最后
+
+水平有限，只能弄到这个地步了，欢迎各路大神 Fork，Issuse，Pull requests，当然能留下一个星星更好了。
+
+## 感谢
+
+感谢 ZhaoCSS 大大的帮助！
