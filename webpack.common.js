@@ -99,7 +99,7 @@ const common = {
     }),
     new MiniCssExtractPlugin({
       // 类似 webpackOptions.output里面的配置 可以忽略
-      filename: '[name].css'
+      filename: '[name]/[name].css'
     })
   ]
 }
