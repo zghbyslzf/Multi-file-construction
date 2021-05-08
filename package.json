@@ -31,6 +31,6 @@
   },
   "dependencies": {
     "tar": "4.4.2",
-    "lodash": "^4.17.11"
+    "lodash": "^4.17.21"
   }
 }
