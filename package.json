@@ -30,7 +30,7 @@
     "webpack-merge": "^4.2.1"
   },
   "dependencies": {
-    "tar": "4.4.2",
+    "tar": "4.4.15",
     "lodash": "^4.17.11"
   }
 }
